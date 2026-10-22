@@ -18,7 +18,7 @@ class ExponentialBackoffStrategy extends AbstractBackoffStrategy
         return false;
     }
 
-    protected function getDelay($retries, RequestInterface $request, Response $response = null, HttpException $e = null)
+    protected function getDelay($retries, RequestInterface $request, ?Response $response = null, ?HttpException $e = null)
     {
         return (int) pow(2, $retries);
     }

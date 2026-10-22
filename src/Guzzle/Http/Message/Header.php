@@ -31,6 +31,7 @@ class Header implements HeaderInterface
         }
     }
 
+    #[\ReturnTypeWillChange]
     public function __toString()
     {
         return implode($this->glue . ' ', $this->toArray());
@@ -113,11 +114,13 @@ class Header implements HeaderInterface
         return $this->values;
     }
 
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return count($this->toArray());
     }
 
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         return new \ArrayIterator($this->toArray());

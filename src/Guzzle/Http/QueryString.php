@@ -87,6 +87,7 @@ class QueryString extends Collection
      *
      * @return string
      */
+    #[\ReturnTypeWillChange]
     public function __toString()
     {
         if (!$this->data) {
@@ -163,7 +164,7 @@ class QueryString extends Collection
      * @return self
      * @see \Guzzle\Http\QueryString::aggregateUsingComma()
      */
-    public function setAggregator(QueryAggregatorInterface $aggregator = null)
+    public function setAggregator(?QueryAggregatorInterface $aggregator = null)
     {
         // Use the default aggregator if none was set
         if (!$aggregator) {

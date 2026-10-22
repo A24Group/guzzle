@@ -476,7 +476,7 @@ class ResponseTest extends \Guzzle\Tests\GuzzleTestCase
     /**
      * @return Response
      */
-    private function getResponse($code, array $headers = null, EntityBody $body = null)
+    private function getResponse($code, ?array $headers = null, ?EntityBody $body = null)
     {
         return new Response($code, $headers, $body);
     }

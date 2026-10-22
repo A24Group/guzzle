@@ -25,7 +25,7 @@ class CallbackBackoffStrategy extends AbstractBackoffStrategy
      *
      * @throws InvalidArgumentException
      */
-    public function __construct($callback, $decision, BackoffStrategyInterface $next = null)
+    public function __construct($callback, $decision, ?BackoffStrategyInterface $next = null)
     {
         if (!is_callable($callback)) {
             throw new InvalidArgumentException('The callback must be callable');
@@ -40,7 +40,7 @@ class CallbackBackoffStrategy extends AbstractBackoffStrategy
         return $this->decision;
     }
 
-    protected function getDelay($retries, RequestInterface $request, Response $response = null, HttpException $e = null)
+    protected function getDelay($retries, RequestInterface $request, ?Response $response = null, ?HttpException $e = null)
     {
         return call_user_func($this->callback, $retries, $request, $response, $e);
     }

@@ -26,7 +26,7 @@ class BackoffPlugin extends AbstractHasDispatcher implements EventSubscriberInte
      * @param BackoffStrategyInterface $strategy The backoff strategy used to determine whether or not to retry and
      *                                           the amount of delay between retries.
      */
-    public function __construct(BackoffStrategyInterface $strategy = null)
+    public function __construct(?BackoffStrategyInterface $strategy = null)
     {
         $this->strategy = $strategy;
     }
@@ -42,8 +42,8 @@ class BackoffPlugin extends AbstractHasDispatcher implements EventSubscriberInte
      */
     public static function getExponentialBackoff(
         $maxRetries = 3,
-        array $httpCodes = null,
-        array $curlCodes = null
+        ?array $httpCodes = null,
+        ?array $curlCodes = null
     ) {
         return new self(new TruncatedBackoffStrategy($maxRetries,
             new HttpBackoffStrategy($httpCodes,

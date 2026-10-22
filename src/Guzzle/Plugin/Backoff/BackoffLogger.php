@@ -31,7 +31,7 @@ class BackoffLogger implements EventSubscriberInterface
      * @param LogAdapterInterface $logger    Logger used to log the retries
      * @param MessageFormatter    $formatter Formatter used to format log messages
      */
-    public function __construct(LogAdapterInterface $logger, MessageFormatter $formatter = null)
+    public function __construct(LogAdapterInterface $logger, ?MessageFormatter $formatter = null)
     {
         $this->logger = $logger;
         $this->formatter = $formatter ?: new MessageFormatter(self::DEFAULT_FORMAT);

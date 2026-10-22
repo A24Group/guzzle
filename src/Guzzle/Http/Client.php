@@ -366,7 +366,7 @@ class Client extends AbstractHasDispatcher implements ClientInterface
      *
      * @return string
      */
-    protected function expandTemplate($template, array $variables = null)
+    protected function expandTemplate($template, ?array $variables = null)
     {
         $expansionVars = $this->getConfig()->toArray();
         if ($variables) {

@@ -61,6 +61,7 @@ class Stream implements StreamInterface
         $this->close();
     }
 
+    #[\ReturnTypeWillChange]
     public function __toString()
     {
         if (!$this->isReadable() || (!$this->isSeekable() && $this->isConsumed())) {

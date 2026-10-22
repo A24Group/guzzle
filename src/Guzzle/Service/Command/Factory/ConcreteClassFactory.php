@@ -21,7 +21,7 @@ class ConcreteClassFactory implements FactoryInterface
      * @param ClientInterface    $client    Client that owns the commands
      * @param InflectorInterface $inflector Inflector used to resolve class names
      */
-    public function __construct(ClientInterface $client, InflectorInterface $inflector = null)
+    public function __construct(ClientInterface $client, ?InflectorInterface $inflector = null)
     {
         $this->client = $client;
         $this->inflector = $inflector ?: Inflector::getDefault();
