@@ -23,7 +23,7 @@ class ResourceIteratorClassFactory extends AbstractResourceIteratorFactory
      * @param string|array       $namespaces List of namespaces for iterator objects
      * @param InflectorInterface $inflector  Inflector used to resolve class names
      */
-    public function __construct($namespaces = array(), InflectorInterface $inflector = null)
+    public function __construct($namespaces = array(), ?InflectorInterface $inflector = null)
     {
         $this->namespaces = (array) $namespaces;
         $this->inflector = $inflector ?: Inflector::getDefault();

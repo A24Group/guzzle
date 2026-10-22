@@ -27,6 +27,7 @@ class MapIterator extends \IteratorIterator
         $this->callback = $callback;
     }
 
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return call_user_func($this->callback, parent::current());

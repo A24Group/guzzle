@@ -121,16 +121,19 @@ abstract class ResourceIterator extends AbstractHasDispatcher implements Resourc
         return $this;
     }
 
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return $this->resources ? current($this->resources) : false;
     }
 
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return max(0, $this->iteratedCount - 1);
     }
 
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return $this->retrievedCount;
@@ -149,6 +152,7 @@ abstract class ResourceIterator extends AbstractHasDispatcher implements Resourc
     /**
      * Rewind the Iterator to the first element and send the original command
      */
+    #[\ReturnTypeWillChange]
     public function rewind()
     {
         // Use the original command
@@ -157,12 +161,14 @@ abstract class ResourceIterator extends AbstractHasDispatcher implements Resourc
         $this->next();
     }
 
+    #[\ReturnTypeWillChange]
     public function valid()
     {
         return !$this->invalid && (!$this->resources || $this->current() || $this->nextToken)
             && (!$this->limit || $this->iteratedCount < $this->limit + 1);
     }
 
+    #[\ReturnTypeWillChange]
     public function next()
     {
         $this->iteratedCount++;

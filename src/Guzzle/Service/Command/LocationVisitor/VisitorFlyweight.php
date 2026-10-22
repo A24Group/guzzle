@@ -56,7 +56,7 @@ class VisitorFlyweight
      * @param array $mappings Array mapping request.name and response.name to location visitor classes. Leave null to
      *                        use the default values.
      */
-    public function __construct(array $mappings = null)
+    public function __construct(?array $mappings = null)
     {
         $this->mappings = $mappings === null ? self::$defaultMappings : $mappings;
     }

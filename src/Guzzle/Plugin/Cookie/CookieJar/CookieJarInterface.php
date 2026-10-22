@@ -59,7 +59,7 @@ interface CookieJarInterface extends \Countable, \IteratorAggregate
      * @param Response         $response Response object
      * @param RequestInterface $request  Request that received the response
      */
-    public function addCookiesFromResponse(Response $response, RequestInterface $request = null);
+    public function addCookiesFromResponse(Response $response, ?RequestInterface $request = null);
 
     /**
      * Get cookies matching a request object

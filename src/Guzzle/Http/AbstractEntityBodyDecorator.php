@@ -20,6 +20,7 @@ class AbstractEntityBodyDecorator implements EntityBodyInterface
         $this->body = $body;
     }
 
+    #[\ReturnTypeWillChange]
     public function __toString()
     {
         return (string) $this->body;

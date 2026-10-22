@@ -21,7 +21,7 @@ class DefaultRevalidation implements RevalidationInterface
      * @param CacheStorageInterface     $cache    Cache storage
      * @param CanCacheStrategyInterface $canCache Determines if a message can be cached
      */
-    public function __construct(CacheStorageInterface $cache, CanCacheStrategyInterface $canCache = null)
+    public function __construct(CacheStorageInterface $cache, ?CanCacheStrategyInterface $canCache = null)
     {
         $this->storage = $cache;
         $this->canCache = $canCache ?: new DefaultCanCacheStrategy();

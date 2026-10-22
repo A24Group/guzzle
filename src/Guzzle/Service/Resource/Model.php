@@ -17,7 +17,7 @@ class Model extends Collection
      * @param array     $data      Data contained by the model
      * @param Parameter $structure The structure of the model
      */
-    public function __construct(array $data = array(), Parameter $structure = null)
+    public function __construct(array $data = array(), ?Parameter $structure = null)
     {
         $this->data = $data;
         $this->structure = $structure;
@@ -38,6 +38,7 @@ class Model extends Collection
      *
      * @return string
      */
+    #[\ReturnTypeWillChange]
     public function __toString()
     {
         $output = 'Debug output of ';

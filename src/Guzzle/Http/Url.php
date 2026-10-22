@@ -119,7 +119,7 @@ class Url
      * @param QueryString|array|string $query    Query string of the URL
      * @param string                   $fragment Fragment of the URL
      */
-    public function __construct($scheme, $host, $username = null, $password = null, $port = null, $path = null, QueryString $query = null, $fragment = null)
+    public function __construct($scheme, $host, $username = null, $password = null, $port = null, $path = null, ?QueryString $query = null, $fragment = null)
     {
         $this->scheme = $scheme;
         $this->host = $host;
@@ -148,6 +148,7 @@ class Url
      *
      * @return string
      */
+    #[\ReturnTypeWillChange]
     public function __toString()
     {
         return self::buildUrl($this->getParts());

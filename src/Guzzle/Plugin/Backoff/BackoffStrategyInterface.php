@@ -24,7 +24,7 @@ interface BackoffStrategyInterface
     public function getBackoffPeriod(
         $retries,
         RequestInterface $request,
-        Response $response = null,
-        HttpException $e = null
+        ?Response $response = null,
+        ?HttpException $e = null
     );
 }

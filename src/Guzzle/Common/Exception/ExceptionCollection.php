@@ -13,7 +13,7 @@ class ExceptionCollection extends \Exception implements GuzzleException, \Iterat
     /** @var string Succinct exception message not including sub-exceptions */
     private $shortMessage;
 
-    public function __construct($message = '', $code = 0, \Exception $previous = null)
+    public function __construct($message = '', $code = 0, ?\Exception $previous = null)
     {
         parent::__construct($message, $code, $previous);
         $this->shortMessage = $message;
@@ -60,6 +60,7 @@ class ExceptionCollection extends \Exception implements GuzzleException, \Iterat
      *
      * @return int
      */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return count($this->exceptions);
@@ -70,6 +71,7 @@ class ExceptionCollection extends \Exception implements GuzzleException, \Iterat
      *
      * @return \ArrayIterator
      */
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         return new \ArrayIterator($this->exceptions);
