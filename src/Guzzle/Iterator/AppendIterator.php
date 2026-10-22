@@ -12,6 +12,7 @@ class AppendIterator extends \AppendIterator
      *
      * @param \Iterator $iterator Iterator to append
      */
+    #[\ReturnTypeWillChange]
     public function append(\Iterator $iterator)
     {
         $this->getArrayIterator()->append($iterator);
