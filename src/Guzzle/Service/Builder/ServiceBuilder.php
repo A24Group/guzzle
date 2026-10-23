@@ -77,7 +77,14 @@ class ServiceBuilder extends AbstractHasDispatcher implements ServiceBuilderInte
      */
     public function __serialize()
     {
-        return array($this->serialize());
+        $serialized = $this->serialize();
+        // serialize() returns false when json_encode() fails (e.g. a body that is not valid UTF-8).
+        // Serializable::serialize() used to throw on that; keep failing instead of storing false.
+        if (!is_string($serialized)) {
+            throw new \RuntimeException('Unable to serialize ' . get_class($this));
+        }
+
+        return array($serialized);
     }
 
     /**
