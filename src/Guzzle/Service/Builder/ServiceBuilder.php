@@ -70,6 +70,26 @@ class ServiceBuilder extends AbstractHasDispatcher implements ServiceBuilderInte
         $this->builderConfig = json_decode($serialized, true);
     }
 
+    /**
+     * PHP 8.1+ replacement for \Serializable, wrapping the existing JSON serialize()
+     *
+     * @return array
+     */
+    public function __serialize()
+    {
+        return array($this->serialize());
+    }
+
+    /**
+     * PHP 8.1+ replacement for \Serializable, wrapping the existing JSON unserialize()
+     *
+     * @param array $data
+     */
+    public function __unserialize(array $data)
+    {
+        $this->unserialize($data[0]);
+    }
+
     public function serialize()
     {
         return json_encode($this->builderConfig);

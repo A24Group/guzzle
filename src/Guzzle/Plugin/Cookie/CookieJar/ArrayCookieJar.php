@@ -165,6 +165,26 @@ class ArrayCookieJar implements CookieJarInterface, \Serializable
     }
 
     /**
+     * PHP 8.1+ replacement for \Serializable, wrapping the existing JSON serialize()
+     *
+     * @return array
+     */
+    public function __serialize()
+    {
+        return array($this->serialize());
+    }
+
+    /**
+     * PHP 8.1+ replacement for \Serializable, wrapping the existing JSON unserialize()
+     *
+     * @param array $data
+     */
+    public function __unserialize(array $data)
+    {
+        $this->unserialize($data[0]);
+    }
+
+    /**
      * Returns the total number of stored cookies
      *
      * @return int

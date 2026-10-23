@@ -177,6 +177,26 @@ class Response extends AbstractMessage implements \Serializable
     }
 
     /**
+     * PHP 8.1+ replacement for \Serializable, wrapping the existing JSON serialize()
+     *
+     * @return array
+     */
+    public function __serialize()
+    {
+        return array($this->serialize());
+    }
+
+    /**
+     * PHP 8.1+ replacement for \Serializable, wrapping the existing JSON unserialize()
+     *
+     * @param array $data
+     */
+    public function __unserialize(array $data)
+    {
+        $this->unserialize($data[0]);
+    }
+
+    /**
      * Get the response entity body
      *
      * @param bool $asString Set to TRUE to return a string of the body rather than a full body object
