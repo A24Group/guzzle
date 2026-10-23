@@ -129,6 +129,7 @@ class Request extends AbstractMessage implements RequestInterface
      *
      * @return string
      */
+    #[\ReturnTypeWillChange]
     public function __toString()
     {
         return $this->getRawHeaders() . "\r\n\r\n";

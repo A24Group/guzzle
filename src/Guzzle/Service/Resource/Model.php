@@ -38,6 +38,7 @@ class Model extends Collection
      *
      * @return string
      */
+    #[\ReturnTypeWillChange]
     public function __toString()
     {
         $output = 'Debug output of ';

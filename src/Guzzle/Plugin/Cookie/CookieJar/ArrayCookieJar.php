@@ -169,6 +169,7 @@ class ArrayCookieJar implements CookieJarInterface, \Serializable
      *
      * @return int
      */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return count($this->cookies);
@@ -179,6 +180,7 @@ class ArrayCookieJar implements CookieJarInterface, \Serializable
      *
      * @return \ArrayIterator
      */
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         return new \ArrayIterator($this->cookies);

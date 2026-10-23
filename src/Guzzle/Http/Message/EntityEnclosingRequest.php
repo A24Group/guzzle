@@ -34,6 +34,7 @@ class EntityEnclosingRequest extends Request implements EntityEnclosingRequestIn
     /**
      * @return string
      */
+    #[\ReturnTypeWillChange]
     public function __toString()
     {
         // Only attempt to include the POST data if it's only fields

@@ -28,6 +28,7 @@ class HistoryPlugin implements EventSubscriberInterface, \IteratorAggregate, \Co
      *
      * @return string
      */
+    #[\ReturnTypeWillChange]
     public function __toString()
     {
         $lines = array();
@@ -101,6 +102,7 @@ class HistoryPlugin implements EventSubscriberInterface, \IteratorAggregate, \Co
      *
      * @return \ArrayIterator
      */
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         // Return an iterator just like the old iteration of the HistoryPlugin for BC compatibility (use getAll())
@@ -115,6 +117,7 @@ class HistoryPlugin implements EventSubscriberInterface, \IteratorAggregate, \Co
      *
      * @return int
      */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return count($this->transactions);

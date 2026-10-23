@@ -29,6 +29,7 @@ class FilterIterator extends \FilterIterator
         $this->callback = $callback;
     }
 
+    #[\ReturnTypeWillChange]
     public function accept()
     {
         return call_user_func($this->callback, $this->current());

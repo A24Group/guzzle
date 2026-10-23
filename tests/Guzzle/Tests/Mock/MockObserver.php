@@ -30,6 +30,7 @@ class MockObserver implements \Countable, EventSubscriberInterface
         return end($this->events);
     }
 
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return count($this->events);
