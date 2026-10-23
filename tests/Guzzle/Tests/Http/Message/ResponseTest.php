@@ -659,6 +659,15 @@ class ResponseTest extends \Guzzle\Tests\GuzzleTestCase
         $this->assertEquals('test', (string) $r->getBody());
     }
 
+    /**
+     * @expectedException \Guzzle\Common\Exception\RuntimeException
+     * @expectedExceptionMessage Unable to serialize Guzzle\Http\Message\Response
+     */
+    public function testSerializeThrowsWhenBodyIsNotValidUtf8()
+    {
+        serialize(new Response(200, null, "\xB1\x31"));
+    }
+
     public function testPreventsComplexExternalEntities()
     {
         $xml = '<?xml version="1.0"?><!DOCTYPE scan[<!ENTITY test SYSTEM "php://filter/read=convert.base64-encode/resource=ResponseTest.php">]><scan>&test;</scan>';
