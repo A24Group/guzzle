@@ -165,6 +165,34 @@ class ArrayCookieJar implements CookieJarInterface, \Serializable
     }
 
     /**
+     * Used instead of \Serializable from PHP 7.4, wrapping the existing JSON serialize(). Writes the O:
+     * format, which v3.9.0 and older can't unserialize.
+     *
+     * @return array
+     */
+    public function __serialize()
+    {
+        $serialized = $this->serialize();
+        // serialize() returns false when json_encode() fails (e.g. on data that is not valid UTF-8).
+        // Serializable::serialize() used to throw on that; keep failing instead of storing false.
+        if (!is_string($serialized)) {
+            throw new \Guzzle\Common\Exception\RuntimeException('Unable to serialize ' . get_class($this));
+        }
+
+        return array($serialized);
+    }
+
+    /**
+     * Used instead of \Serializable from PHP 7.4, wrapping the existing JSON unserialize()
+     *
+     * @param array $data
+     */
+    public function __unserialize(array $data)
+    {
+        $this->unserialize($data[0]);
+    }
+
+    /**
      * Returns the total number of stored cookies
      *
      * @return int
