@@ -87,6 +87,7 @@ class QueryString extends Collection
      *
      * @return string
      */
+    #[\ReturnTypeWillChange]
     public function __toString()
     {
         if (!$this->data) {

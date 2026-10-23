@@ -40,7 +40,7 @@ class Url
         $parts += $defaults;
 
         // Convert the query string into a QueryString object
-        if ($parts['query'] || 0 !== strlen($parts['query'])) {
+        if ($parts['query'] || 0 !== strlen((string) $parts['query'])) {
             $parts['query'] = QueryString::fromString($parts['query']);
         }
 
@@ -148,6 +148,7 @@ class Url
      *
      * @return string
      */
+    #[\ReturnTypeWillChange]
     public function __toString()
     {
         return self::buildUrl($this->getParts());

@@ -32,6 +32,7 @@ class CachingEntityBody extends AbstractEntityBodyDecorator
      *
      * @return string
      */
+    #[\ReturnTypeWillChange]
     public function __toString()
     {
         $pos = $this->ftell();

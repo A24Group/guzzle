@@ -24,6 +24,7 @@ class MockCommandIterator extends ResourceIterator
         return $data['resources'];
     }
 
+    #[\ReturnTypeWillChange]
     public function next()
     {
         $this->calledNext++;

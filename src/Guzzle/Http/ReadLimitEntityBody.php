@@ -28,6 +28,7 @@ class ReadLimitEntityBody extends AbstractEntityBodyDecorator
      * Returns only a subset of the decorated entity body when cast as a string
      * {@inheritdoc}
      */
+    #[\ReturnTypeWillChange]
     public function __toString()
     {
         return substr((string) $this->body, $this->offset, $this->limit) ?: '';

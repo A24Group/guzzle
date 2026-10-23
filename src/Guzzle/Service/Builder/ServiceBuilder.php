@@ -70,6 +70,34 @@ class ServiceBuilder extends AbstractHasDispatcher implements ServiceBuilderInte
         $this->builderConfig = json_decode($serialized, true);
     }
 
+    /**
+     * Used instead of \Serializable from PHP 7.4, wrapping the existing JSON serialize(). Writes the O:
+     * format, which v3.9.0 and older can't unserialize.
+     *
+     * @return array
+     */
+    public function __serialize()
+    {
+        $serialized = $this->serialize();
+        // serialize() returns false when json_encode() fails (e.g. on data that is not valid UTF-8).
+        // Serializable::serialize() used to throw on that; keep failing instead of storing false.
+        if (!is_string($serialized)) {
+            throw new \Guzzle\Common\Exception\RuntimeException('Unable to serialize ' . get_class($this));
+        }
+
+        return array($serialized);
+    }
+
+    /**
+     * Used instead of \Serializable from PHP 7.4, wrapping the existing JSON unserialize()
+     *
+     * @param array $data
+     */
+    public function __unserialize(array $data)
+    {
+        $this->unserialize($data[0]);
+    }
+
     public function serialize()
     {
         return json_encode($this->builderConfig);
@@ -166,22 +194,26 @@ class ServiceBuilder extends AbstractHasDispatcher implements ServiceBuilderInte
         return $this;
     }
 
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         $this->set($offset, $value);
     }
 
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         unset($this->builderConfig[$offset]);
         unset($this->clients[$offset]);
     }
 
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         return isset($this->builderConfig[$offset]) || isset($this->clients[$offset]);
     }
 
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return $this->get($offset);
