@@ -96,7 +96,7 @@ class Operation implements OperationInterface
      * @param array                       $config      Array of configuration data
      * @param ServiceDescriptionInterface $description Service description used to resolve models if $ref tags are found
      */
-    public function __construct(array $config = array(), ServiceDescriptionInterface $description = null)
+    public function __construct(array $config = array(), ?ServiceDescriptionInterface $description = null)
     {
         $this->description = $description;
 

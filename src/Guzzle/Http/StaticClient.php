@@ -21,7 +21,7 @@ final class StaticClient
      * @param string          $className Class name to use to mount
      * @param ClientInterface $client    Client used to send requests
      */
-    public static function mount($className = 'Guzzle', ClientInterface $client = null)
+    public static function mount($className = 'Guzzle', ?ClientInterface $client = null)
     {
         class_alias(__CLASS__, $className);
         if ($client) {

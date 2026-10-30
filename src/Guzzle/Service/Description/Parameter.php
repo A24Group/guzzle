@@ -92,7 +92,7 @@ class Parameter
      *
      * @throws InvalidArgumentException
      */
-    public function __construct(array $data = array(), ServiceDescriptionInterface $description = null)
+    public function __construct(array $data = array(), ?ServiceDescriptionInterface $description = null)
     {
         if ($description) {
             if (isset($data['$ref'])) {
@@ -803,7 +803,7 @@ class Parameter
      *
      * @return self
      */
-    public function setItems(Parameter $items = null)
+    public function setItems(?Parameter $items = null)
     {
         if ($this->items = $items) {
             $this->items->setParent($this);
@@ -868,7 +868,7 @@ class Parameter
      *
      * @return self
      */
-    public function setEnum(array $enum = null)
+    public function setEnum(?array $enum = null)
     {
         $this->enum = $enum;
 

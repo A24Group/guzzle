@@ -48,7 +48,7 @@ class HistoryPlugin implements EventSubscriberInterface, \IteratorAggregate, \Co
      *
      * @return HistoryPlugin
      */
-    public function add(RequestInterface $request, Response $response = null)
+    public function add(RequestInterface $request, ?Response $response = null)
     {
         if (!$response && $request->getResponse()) {
             $response = $request->getResponse();

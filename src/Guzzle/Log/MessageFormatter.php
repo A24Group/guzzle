@@ -81,8 +81,8 @@ class MessageFormatter
      */
     public function format(
         RequestInterface $request,
-        Response $response = null,
-        CurlHandle $handle = null,
+        ?Response $response = null,
+        ?CurlHandle $handle = null,
         array $customData = array()
     ) {
         $cache = $customData;

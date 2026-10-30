@@ -33,8 +33,8 @@ abstract class AbstractBackoffStrategy implements BackoffStrategyInterface
     public function getBackoffPeriod(
         $retries,
         RequestInterface $request,
-        Response $response = null,
-        HttpException $e = null
+        ?Response $response = null,
+        ?HttpException $e = null
     ) {
         $delay = $this->getDelay($retries, $request, $response, $e);
         if ($delay === false) {
@@ -85,7 +85,7 @@ abstract class AbstractBackoffStrategy implements BackoffStrategyInterface
     abstract protected function getDelay(
         $retries,
         RequestInterface $request,
-        Response $response = null,
-        HttpException $e = null
+        ?Response $response = null,
+        ?HttpException $e = null
     );
 }

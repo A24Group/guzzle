@@ -101,7 +101,7 @@ class CacheAdapterFactory implements FromConfigInterface
      * @deprecated
      * @codeCoverageIgnore
      */
-    private static function createObject($className, array $args = null)
+    private static function createObject($className, ?array $args = null)
     {
         try {
             if (!$args) {

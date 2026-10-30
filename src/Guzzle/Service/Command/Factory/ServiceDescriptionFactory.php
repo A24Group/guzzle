@@ -20,7 +20,7 @@ class ServiceDescriptionFactory implements FactoryInterface
      * @param ServiceDescriptionInterface $description Service description
      * @param InflectorInterface          $inflector   Optional inflector to use if the command is not at first found
      */
-    public function __construct(ServiceDescriptionInterface $description, InflectorInterface $inflector = null)
+    public function __construct(ServiceDescriptionInterface $description, ?InflectorInterface $inflector = null)
     {
         $this->setServiceDescription($description);
         $this->inflector = $inflector;

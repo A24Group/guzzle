@@ -34,8 +34,8 @@ class BatchTransferException extends \Exception implements GuzzleException
         array $batch,
         array $transferredItems,
         \Exception $exception,
-        TransferStrategy $transferStrategy = null,
-        DivisorStrategy $divisorStrategy = null
+        ?TransferStrategy $transferStrategy = null,
+        ?DivisorStrategy $divisorStrategy = null
     ) {
         $this->batch = $batch;
         $this->transferredItems = $transferredItems;

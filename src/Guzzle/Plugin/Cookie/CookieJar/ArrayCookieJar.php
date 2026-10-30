@@ -214,7 +214,7 @@ class ArrayCookieJar implements CookieJarInterface, \Serializable
         return new \ArrayIterator($this->cookies);
     }
 
-    public function addCookiesFromResponse(Response $response, RequestInterface $request = null)
+    public function addCookiesFromResponse(Response $response, ?RequestInterface $request = null)
     {
         if ($cookieHeader = $response->getHeader('Set-Cookie')) {
             $parser = ParserRegistry::getInstance()->getParser('cookie');

@@ -18,7 +18,7 @@ class CookiePlugin implements EventSubscriberInterface
     /**
      * @param CookieJarInterface $cookieJar Cookie jar used to hold cookies. Creates an ArrayCookieJar by default.
      */
-    public function __construct(CookieJarInterface $cookieJar = null)
+    public function __construct(?CookieJarInterface $cookieJar = null)
     {
         $this->cookieJar = $cookieJar ?: new ArrayCookieJar();
     }
